@@ -1,0 +1,98 @@
+# STACK
+
+# REGS
+
+# FLAGS
+
+# SEED
+
+# MODE
+MTRIG: DEG
+MFMT: FIX 6
+
+# EQUATION LIST
+EQNPTR: 0
+EQN
+EQNEND
+
+# PROGRAM
+PTR: 0
+PGM
+  LBL A
+  XEQ E
+  RCL X
+  STO Y
+  RCL N
+  STO i
+  XEQ Z
+  VIEW S
+  RTN
+  LBL L
+  INPUT R
+  INPUT X
+  STO Y
+  INPUT N
+  STO i
+  LBL Z
+  RCL Y
+  1
+  RCL Y
+  -
+  \mul;
+  RCL R
+  \mul;
+  STO Y
+  FS? 0
+  PSE
+  DSE i
+  GTO Z
+  STO Y
+  RCL R
+  RCL X
+  RCL N
+  RCL Y
+  CF 0
+  RTN
+  LBL E
+  INPUT R
+  INPUT X
+  STO Y
+  INPUT N
+  STO i
+  0
+  STO L
+  LBL Y
+  RCL Y
+  2
+  \mul;
+  1
+  x<>y
+  -
+  ABS
+  RCL R
+  \mul;
+  x=0?
+  GTO X
+  LN
+  STO+ L
+  LBL X
+  RCL Y
+  1
+  RCL Y
+  -
+  \mul;
+  RCL R
+  \mul;
+  STO Y
+  DSE i
+  GTO Y
+  RCL L
+  RCL N
+  \div;
+  STO S
+  RCL R
+  RCL X
+  RCL N
+  RCL S
+  RTN
+PGMEND
